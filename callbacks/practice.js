@@ -1,30 +1,30 @@
 /* 
-  Once you complete a problem, refresh ./SpecRunner.html in your browser and check to see if the problem's test(s) are passing.
-  Passed tests will be indicated by a green circle.
-  Failed tests will be indicated by a red X.
+Once you complete a problem, refresh ./SpecRunner.html in your browser and check to see if the problem's test(s) are passing.
+Passed tests will be indicated by a green circle.
+Failed tests will be indicated by a red X.
 
-  You can refresh the page at any time to re-run all the tests.
+You can refresh the page at any time to re-run all the tests.
 
-  In this repo your job is to write functions to make each function call work properly.
+In this repo your job is to write functions to make each function call work properly.
 
-  Here's an example of code that will be given to you:
+Here's an example of code that will be given to you:
 
-  sayHi('Hi Katie', function(thingToSay){
-    alert(thingToSay);
-  });
+sayHi('Hi Katie', function(thingToSay){
+  alert(thingToSay);
+});
 
-  It would be your job to create the sayHi function:
+It would be your job to create the sayHi function:
 
-  var sayHi = function(str, cb){
-    cb(str);
-  }
+var sayHi = function(str, cb){
+  cb(str);
+}
 */
 
 ////////// PROBLEM 1 //////////
 
 /*
-  Write a function called first that takes in two parameters, an array and a callback function.
-  Then invoke the callback function, passing in the first element in the array as it's argument.
+Write a function called first that takes in two parameters, an array and a callback function.
+Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
 // Code Here 
@@ -49,8 +49,8 @@ first(names, function(firstName){
 ////////// PROBLEM 2 //////////
 
 /*
-  Write a function called last that takes in an array and a callback function. 
-  Then invoke the callback, passing in the last element in the array as the argument.
+Write a function called last that takes in an array and a callback function. 
+Then invoke the callback, passing in the last element in the array as the argument.
 */
 
 //Code Here
@@ -70,8 +70,8 @@ last(names, function(lastName){
 ////////// PROBLEM 3 //////////
 
 /*
-  Write a function called multiply that takes in three parameters: two numbers and a callback function.  
-  Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
+Write a function called multiply that takes in three parameters: two numbers and a callback function.  
+Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
 //Code Here
@@ -90,22 +90,22 @@ multiply(4, 3, function(answer){
 ////////// PROBLEM 4 //////////
 
 /*
-  Write a function called contains that takes in three parameters: an array, a name and a callback.  
-  Check if the name exists in the array. 
-  If it does, invoke the callback with true as the argument. 
-  If the name does not exist, invoke the callback with false as the argument.
+Write a function called contains that takes in three parameters: an array, a name and a callback.  
+Check if the name exists in the array. 
+If it does, invoke the callback with true as the argument. 
+If the name does not exist, invoke the callback with false as the argument.
 */
 
 //Code Here 
 function contains(arr, name, cb){
   for(i = 0; i< arr.length; i++){
-  if(name){
-    cb(true)
+    if(arr[i] === name){
+      cb(true)
+    }
+    else {
+      cb(false)
+    }
   }
-  else {
-   cb(false)
-  }
-}
 }
 
 // Do not edit the code below.
@@ -123,18 +123,17 @@ contains(names, 'Colt', function(result){
 ////////// PROBLEM 5 //////////
 
 /*
-  Write a function called uniq that takes in an array and a callback function.
+Write a function called uniq that takes in an array and a callback function.
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
-*/
+  */
 
-//Code Here
-
-function uniq(arr, cb){
-  for(let i = 0; i < arr.length; i++){
-    for(let j = i; j < arr.length; j++){
-      if(arr[i] === arr[j]){
-        arr.splice(j, i)
-        j--
+ //Code Here
+ 
+ function uniq(arr, cb){
+   for(let i = 0; i < arr.length; i++){
+     for(let j = i + 1; j < arr.length; j++){
+       if(arr[i] === arr[j]){
+        arr.splice(j, 1)
       }
     }
   }
@@ -153,12 +152,12 @@ uniq(names, function(uniqArr){
 /* 
   Write a function called each that takes in an array of names and a callback function. 
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
-*/
+  */
 
 //Code Here 
 function each (nameArr, cb){
   for(let i = 0; i < nameArr.length; i++){
-    cb(nameArr, i)
+    cb(nameArr[i], i)
   }
 }
 
@@ -181,11 +180,13 @@ each(names, function(item, indice){
 
 function getUserById(users, id, cb){
   for(let i = 0; i <users.length; i++){
-    if(i === id){
-      cb(users)
+     if(users[i].id === id){
+        return cb(users[i]) 
     }
   }
 }
+
+
 // Do not edit the code below.
 var users = [
   {
